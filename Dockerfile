@@ -1,6 +1,4 @@
 FROM node:21-alpine
-FROM nginx:1.19.0
-COPY ./nginx.conf /opt/homebrew/etc/nginx/nginx.conf
 
 WORKDIR /app
 
