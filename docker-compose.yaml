@@ -9,8 +9,6 @@ services:
       - APP_NAME=FrontendApp
     volumes:
       - ./nginx.conf:/opt/homebrew/etc/nginx/nginx.conf
-    entrypoint:
-      - CMD [ "nginx", "-g", "daemon off;"]
     ports:
       - "3001:3000"
     depends_on:
