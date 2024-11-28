@@ -4,8 +4,8 @@ services:
     image: nginx:1.19.0
     build: .
     environment:
-      - NGINX_USERNAME = admin
-      - NGINX_PASSWORD = password
+      - NGINX_USERNAME = ${NGINX_USER}
+      - NGINX_PASSWORD = ${NGINX_PASS}
       - APP_NAME=FrontendApp
     volumes:
       - ./nginx.conf:/opt/homebrew/etc/nginx/nginx.conf
@@ -18,14 +18,18 @@ services:
   app2-backend:
     build: .
     environment:
-      - APP_NAME=App2
+      - NODE_USERNAME = ${NODE_USER}
+      - NODE_PASSWORD = ${NODE_PASS}
+      - APP_NAME=BackupendApp2
     ports:
       - "3002:3000"
 
   app3-backend:
     build: .
     environment:
-      - APP_NAME=App3
+      - NODE_USERNAME = ${NODE_USER}
+      - NODE_PASSWORD = ${NODE_PASS}
+      - APP_NAME=BackendApp3
     ports:
       - "3003:3000"
 
