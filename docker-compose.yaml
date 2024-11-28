@@ -1,19 +1,13 @@
 version: '3'
 services:
-  app1-frontend:
-    image: nginx:1.19.0
+  app1-backend:
     build: .
     environment:
-      - NGINX_USERNAME = ${NGINX_USER}
-      - NGINX_PASSWORD = ${NGINX_PASS}
-      - APP_NAME=FrontendApp
-    volumes:
-      - ./nginx.conf:/opt/homebrew/etc/nginx/nginx.conf
+      - NODE_USERNAME = ${NODE_USER}
+      - NODE_PASSWORD = ${NODE_PASS}
+      - APP_NAME=BackupendApp1
     ports:
       - "3001:3000"
-    depends_on:
-      - app2-backend
-      - app3-backend 
 
   app2-backend:
     build: .
