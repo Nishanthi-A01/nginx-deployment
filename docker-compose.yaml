@@ -1,20 +1,27 @@
 version: '3'
 services:
-  app1:
+  app1-frontend:
+    image: nginx:1.19.0
     build: .
     environment:
-      - APP_NAME=App1
+      - NGINX_USERNAME = admin
+      - NGINX_PASSWORD = password
+      - APP_NAME=FrontendApp
+    command: cp -p ./nginx.conf /opt/homebrew/etc/nginx/nginx.conf
     ports:
       - "3001:3000"
+    depends_on:
+      - app2-backend
+      - app3-backend 
 
-  app2:
+  app2-backend:
     build: .
     environment:
       - APP_NAME=App2
     ports:
       - "3002:3000"
 
-  app3:
+  app3-backend:
     build: .
     environment:
       - APP_NAME=App3
