@@ -7,7 +7,9 @@ services:
       - NGINX_USERNAME = admin
       - NGINX_PASSWORD = password
       - APP_NAME=FrontendApp
-    command: sh cp ./nginx.conf /opt/homebrew/etc/nginx/nginx.conf
+    command: 
+      - /bin/bash
+      - cp ./nginx.conf /opt/homebrew/etc/nginx/nginx.conf
     ports:
       - "3001:3000"
     depends_on:
